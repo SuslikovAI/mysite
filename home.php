@@ -24,7 +24,6 @@ body {
     left: 5%;
     margin: 0;
 	 }
-
      .a3 {
 	 color: black;
 	 width : 40%;
@@ -44,7 +43,6 @@ body {
 	color: black;
 	border-radius: 2px;
 	 }
-
 </style>
 	<title>home</title>
 	<meta charset="utf-8">
@@ -66,36 +64,40 @@ body {
 		$password="";
 		$dbname="mysite"; 
 		$conn  =  mysqli_connect($servername,  $username,  $password, $dbname);
-			for($x=99;$x>0;$x--)
-			{
+	
+	for($x=99;$x>0;$x--)
+		{
 				$result  =  mysqli_query( $conn,  "SELECT * FROM post WHERE rating = '".$x."'" );
 				while (  $row  =  mysqli_fetch_row($result)  )
-				{
+			{ 
 					echo "<h1>$row[1] <small><small><small><small>by $row[4]</small></small></small></small></h1>
 					<h2>$row[2]<h2> <p>+ <input
 					type='radio' name='$row[0]' value='0'></p> <p>- <input type='radio' 
-					name='$row[0]' value='1'></p> <br>";
-				}       
-			 if (isset($_POST('$row[0]')))
-			{
-				if ($_POST('$row[0]'))=='0')
-				{
-					$sql = "UPDATE post SET rating=rating+1
-					WHERE id='".$row[0]."'";
-				} else {
-					$sql = "UPDATE post SET rating=rating-1 WHERE id='".$row[0]."'";
-				}
-				if($row[3]<0)
-				{
-					mysqli_query($conn, "DELETE * FROM post where id = ".$_row[0]."");
-				}
-				if (mysqli_query($conn, $sql)) 
-				{
-					echo "Record updated successfully";
-				} else {
-					echo "Error updating record: " . mysqli_error($conn);
-				}
+					name='$row[0]' value='1'></p> <br>";echo "<hr>";
+					if (($row[3]==$x)and(isset($_POST))
+						{
+							If($_POST($row[0]) == '0')
+								{
+								$sql = "UPDATE post SET rating=rating+1 WHERE id='".$row[0]."'";
+								} else {
+								$sql = "UPDATE post SET rating=rating-1 WHERE id='".$row[0]."'";
+								}
+							if($row[3]<0)
+								{
+								mysqli_query($conn, "DELETE * FROM post where id = ".$_row[0]."");
+								}
+							if (mysqli_query($conn, $sql)) 
+								{
+								echo "";
+								} else {
+								echo "Error updating record: " . mysqli_error($conn);
+						}
+						
+				} 
 			}
+				
+				
+
 		}
 		mysqli_close($conn);		
 	}						
